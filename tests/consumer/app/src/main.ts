@@ -1,3 +1,4 @@
+import 'thiliaui/fonts.css'
 import 'thiliaui/tokens.css'
 import 'thiliaui/style.css'
 import { createApp } from 'vue'

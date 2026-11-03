@@ -8,6 +8,13 @@ import { ThSeparator } from '../src'
     <p>Playground de développement.</p>
 
     <section>
+      <h2>Polices</h2>
+      <p class="playground__display">Affichage · Inter Tight 500</p>
+      <p>Corps de texte · Inter Tight 400 · « Œuvre, ça, déjà. »</p>
+      <p class="playground__mono">CN-1042 · Martian Mono 400</p>
+    </section>
+
+    <section>
       <h2>Séparateur</h2>
       <p>Horizontal :</p>
       <ThSeparator />
@@ -21,6 +28,29 @@ import { ThSeparator } from '../src'
 </template>
 
 <style>
+/* Familles et échelle provisoires : les tokens typographiques arrivent avec TIB-149. */
+.playground {
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 400;
+}
+
+.playground h1,
+.playground h2,
+.playground__display {
+  font-weight: 500;
+}
+
+.playground__display {
+  font-size: 40px;
+  line-height: 44px;
+}
+
+.playground__mono {
+  font-family: 'Martian Mono', monospace;
+  font-size: 12px;
+  line-height: 18px;
+}
+
 .playground__row {
   display: flex;
   gap: 12px;
