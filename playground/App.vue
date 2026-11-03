@@ -1,5 +1,42 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue'
 import { ThSeparator } from '../src'
+
+const tokens = [
+  ['background', 'Fond'],
+  ['surface', 'Surface'],
+  ['surface-raised', 'Surface haute'],
+  ['line', 'Filet'],
+  ['border', 'Contour'],
+  ['text', 'Texte'],
+  ['text-secondary', 'Texte second.'],
+  ['accent', 'Accent'],
+  ['accent-hover', 'Accent survol'],
+  ['on-accent', 'Sur accent'],
+  ['success', 'Succès'],
+  ['warning', 'Alerte'],
+  ['danger', 'Erreur'],
+  ['danger-hover', 'Erreur survol'],
+  ['on-danger', 'Sur erreur'],
+] as const
+
+const modes = [
+  ['dark', 'Sombre'],
+  ['light', 'Clair'],
+] as const
+
+// Valeurs calculées par le navigateur, pour vérifier ce que chaque mode applique.
+const zones = ref<Record<string, HTMLElement>>({})
+const values = ref<Record<string, Record<string, string>>>({})
+
+onMounted(() => {
+  for (const [mode] of modes) {
+    const style = getComputedStyle(zones.value[mode]!)
+    values.value[mode] = Object.fromEntries(
+      tokens.map(([token]) => [token, style.getPropertyValue(`--thilia-${token}`).trim()]),
+    )
+  }
+})
 </script>
 
 <template>
@@ -15,27 +52,53 @@ import { ThSeparator } from '../src'
     </section>
 
     <section>
-      <h2>Séparateur</h2>
-      <p>Horizontal :</p>
-      <ThSeparator />
-      <div class="playground__row">
-        <span>Gauche</span>
-        <ThSeparator orientation="vertical" decorative />
-        <span>Droite</span>
+      <h2>Couleurs</h2>
+      <div class="playground__modes">
+        <div
+          v-for="[mode, label] in modes"
+          :key="mode"
+          :ref="(el) => { if (el) zones[mode] = el as HTMLElement }"
+          :data-thilia-theme="mode"
+          class="playground__mode"
+        >
+          <h3>{{ label }}</h3>
+          <ul class="playground__swatches">
+            <li v-for="[token, name] in tokens" :key="token">
+              <span class="playground__swatch" :style="{ background: `var(--thilia-${token})` }" />
+              <span>{{ name }}</span>
+              <code class="playground__mono">{{ values[mode]?.[token] }}</code>
+            </li>
+          </ul>
+          <ThSeparator />
+          <div class="playground__row">
+            <span>Gauche</span>
+            <ThSeparator orientation="vertical" decorative />
+            <span>Droite</span>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 </template>
 
 <style>
-/* Familles et échelle provisoires : les tokens typographiques arrivent avec TIB-149. */
+/* Mise en page du playground seulement. Familles et échelle provisoires :
+   les tokens typographiques arrivent avec TIB-149. */
+body {
+  margin: 0;
+  background: var(--thilia-background);
+  color: var(--thilia-text);
+}
+
 .playground {
+  padding: 24px;
   font-family: 'Inter Tight', sans-serif;
   font-weight: 400;
 }
 
 .playground h1,
 .playground h2,
+.playground h3,
 .playground__display {
   font-weight: 500;
 }
@@ -49,6 +112,39 @@ import { ThSeparator } from '../src'
   font-family: 'Martian Mono', monospace;
   font-size: 12px;
   line-height: 18px;
+  color: var(--thilia-text-secondary);
+}
+
+.playground__modes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.playground__mode {
+  padding: 24px;
+  background: var(--thilia-surface);
+  color: var(--thilia-text);
+  border: 1px solid var(--thilia-line);
+}
+
+.playground__swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+  padding: 0;
+  margin: 0 0 24px;
+  list-style: none;
+}
+
+.playground__swatches li {
+  display: grid;
+  gap: 4px;
+}
+
+.playground__swatch {
+  height: 48px;
+  border: 1px solid var(--thilia-line);
 }
 
 .playground__row {

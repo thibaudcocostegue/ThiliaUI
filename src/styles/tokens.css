@@ -1,1 +1,70 @@
-/* Tokens de couleur ThiliaUI : remplis par TIB-148. */
+/*
+ * Tokens de couleur ThiliaUI · thème Télémétrie (thème par défaut).
+ * Source : planches Fondations et Composants (tokens v0.1).
+ *
+ * Mode sombre par défaut. Pour le mode clair, poser data-thilia-theme="light"
+ * sur <html>, ou sur n'importe quel élément pour une zone dans l'autre mode
+ * (data-thilia-theme="dark" force le sombre).
+ *
+ * Un projet peut remplacer ces variables dans une feuille importée après
+ * celle-ci (voir TIB-150).
+ */
+
+:root,
+[data-thilia-theme='dark'] {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --thilia-background: #101213;
+  --thilia-surface: #15181a;
+  --thilia-surface-raised: #1c2023;
+
+  /* Traits : filet (séparations) et contour (contrôles) */
+  --thilia-line: #2b3033;
+  --thilia-border: #6e7679;
+
+  /* Texte */
+  --thilia-text: #e8eae6;
+  --thilia-text-secondary: #98a09f;
+
+  /* Accent */
+  --thilia-accent: #ff6a1a;
+  --thilia-accent-hover: #ff8442;
+  --thilia-on-accent: #101213;
+
+  /* États */
+  --thilia-success: #3cc7a5;
+  --thilia-warning: #f2c14e;
+  --thilia-danger: #f2617a;
+  --thilia-danger-hover: #f58398;
+  --thilia-on-danger: #101213;
+}
+
+[data-thilia-theme='light'] {
+  color-scheme: light;
+
+  /* Surfaces */
+  --thilia-background: #eff0ee;
+  --thilia-surface: #f8f9f8;
+  --thilia-surface-raised: #ffffff;
+
+  /* Traits : filet (séparations) et contour (contrôles) */
+  --thilia-line: #c9cdcb;
+  --thilia-border: #7e8688;
+
+  /* Texte */
+  --thilia-text: #15181a;
+  --thilia-text-secondary: #586062;
+
+  /* Accent */
+  --thilia-accent: #b83c06;
+  --thilia-accent-hover: #9c3205;
+  --thilia-on-accent: #ffffff;
+
+  /* États */
+  --thilia-success: #0b6e5a;
+  --thilia-warning: #7a5600;
+  --thilia-danger: #b3173a;
+  --thilia-danger-hover: #981431; /* à valider : déduit, absent de la planche Composants */
+  --thilia-on-danger: #ffffff; /* à valider : déduit, absent de la planche Composants */
+}

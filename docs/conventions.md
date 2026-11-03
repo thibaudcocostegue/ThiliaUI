@@ -11,7 +11,7 @@ Ces règles valent pour chaque composant de ThiliaUI. `ThSeparator`
 | Dossier | Nom en kebab-case, sans préfixe | `src/components/separator/` |
 | Classe racine | `th-<nom>` | `.th-separator` |
 | Partie interne | `th-<nom>__<partie>` | `.th-select__item` |
-| Variable CSS | `--thilia-<rôle>`, définie dans les tokens | `--thilia-border` |
+| Variable CSS | `--thilia-<rôle>`, définie dans [les tokens](../src/styles/tokens.css) | `--thilia-line` |
 | Type des props | `Th<Nom>Props` | `ThSeparatorProps` |
 
 Les variantes, tailles et états ne passent jamais par des classes de
@@ -66,6 +66,10 @@ src/
   hexadécimales, les fonctions `rgb()`, `hsl()`, `oklch()`… et les couleurs
   nommées sont refusées par `npm run check:colors`. Seul
   `src/styles/tokens.css` en est exempté.
+- Chaque variable utilisée doit exister en sombre et en clair dans
+  `src/styles/tokens.css` : `npm run check:tokens` le vérifie. Le filet
+  (`--thilia-line`) sert aux séparations, le contour (`--thilia-border`) aux
+  contrôles.
 - Rayon 0, traits de 1 px, aucune ombre (planche Fondations).
 - Les tailles, espacements, durées et le focus utiliseront aussi les tokens
   dès qu'ils existeront (TIB-149).
