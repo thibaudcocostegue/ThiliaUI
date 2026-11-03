@@ -1,7 +1,7 @@
 // Construit le paquet avec un composant de test, l'empaquette comme pour une
 // installation réelle, puis l'installe dans une app Vue qui l'importe.
 import { execSync } from 'node:child_process'
-import { appendFileSync, copyFileSync, cpSync, mkdtempSync, readdirSync, readFileSync, rmSync, symlinkSync } from 'node:fs'
+import { appendFileSync, copyFileSync, cpSync, existsSync, mkdtempSync, readdirSync, readFileSync, rmSync, symlinkSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -40,11 +40,28 @@ try {
   run(`npm install --no-audit --no-fund --prefer-offline ${JSON.stringify(join(work, tarball))}`, app)
   run('npm run typecheck', app)
   run('npm run build', app)
+  checkFonts(join(pkg, 'dist'), join(app, 'dist'))
   run('npm run ssr', app)
 
   console.log('\n✓ Le paquet s’installe et s’importe dans une app Vue.')
 } finally {
   rmSync(work, { recursive: true, force: true })
+}
+
+// Les polices sont livrées avec leurs licences, sans URL externe, et finissent
+// dans le build de l'app.
+function checkFonts(dist, appDist) {
+  const fontsCss = readFileSync(join(dist, 'fonts/fonts.css'), 'utf8')
+  if (/url\(\s*['"]?(?:https?:)?\/\//.test(fontsCss)) throw new Error('fonts.css charge une police depuis une URL externe.')
+  for (const license of ['inter-tight/OFL.txt', 'martian-mono/OFL.txt']) {
+    if (!existsSync(join(dist, 'fonts', license))) throw new Error(`Licence manquante : fonts/${license}`)
+  }
+  const shipped = readdirSync(join(dist, 'fonts'), { recursive: true }).filter((file) => String(file).endsWith('.woff2'))
+  const bundled = readdirSync(join(appDist, 'assets')).filter((file) => file.endsWith('.woff2'))
+  if (shipped.length === 0 || bundled.length !== shipped.length) {
+    throw new Error(`Polices attendues dans le build de l'app : ${shipped.length}, trouvées : ${bundled.length}`)
+  }
+  console.log(`\n✓ ${bundled.length} polices locales dans le build de l'app, licences présentes.`)
 }
 
 // Vue et Reka UI doivent rester des imports, pas du code embarqué.
