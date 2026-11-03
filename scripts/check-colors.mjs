@@ -1,11 +1,12 @@
-// Refuse les couleurs en dur dans les styles des composants : seules les
-// variables --thilia-* sont permises. Les tokens sont le seul fichier exempté.
+// Refuse les couleurs en dur dans les styles du paquet et de la page de doc :
+// seules les variables --thilia-* sont permises. Les tokens sont le seul
+// fichier exempté.
 import { readdirSync, readFileSync } from 'node:fs'
 import { join, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const root = fileURLToPath(new URL('..', import.meta.url))
-const src = join(root, 'src')
+const scanned = ['src', 'playground'].map((dir) => join(root, dir))
 const exempt = new Set(['src/styles/tokens.css'])
 
 const namedColors = 'aliceblue antiquewhite aqua aquamarine azure beige bisque black blanchedalmond blue blueviolet brown burlywood cadetblue chartreuse chocolate coral cornflowerblue cornsilk crimson cyan darkblue darkcyan darkgoldenrod darkgray darkgreen darkgrey darkkhaki darkmagenta darkolivegreen darkorange darkorchid darkred darksalmon darkseagreen darkslateblue darkslategray darkslategrey darkturquoise darkviolet deeppink deepskyblue dimgray dimgrey dodgerblue firebrick floralwhite forestgreen fuchsia gainsboro ghostwhite gold goldenrod gray green greenyellow grey honeydew hotpink indianred indigo ivory khaki lavender lavenderblush lawngreen lemonchiffon lightblue lightcoral lightcyan lightgoldenrodyellow lightgray lightgreen lightgrey lightpink lightsalmon lightseagreen lightskyblue lightslategray lightslategrey lightsteelblue lightyellow lime limegreen linen magenta maroon mediumaquamarine mediumblue mediumorchid mediumpurple mediumseagreen mediumslateblue mediumspringgreen mediumturquoise mediumvioletred midnightblue mintcream mistyrose moccasin navajowhite navy oldlace olive olivedrab orange orangered orchid palegoldenrod palegreen paleturquoise palevioletred papayawhip peachpuff peru pink plum powderblue purple rebeccapurple red rosybrown royalblue saddlebrown salmon sandybrown seagreen seashell sienna silver skyblue slateblue slategray slategrey snow springgreen steelblue tan teal thistle tomato turquoise violet wheat white whitesmoke yellow yellowgreen'
@@ -30,8 +31,8 @@ function styleLines(file, text) {
   return result
 }
 
-const files = readdirSync(src, { recursive: true })
-  .map((file) => join(src, String(file)))
+const files = scanned
+  .flatMap((dir) => readdirSync(dir, { recursive: true }).map((file) => join(dir, String(file))))
   .filter((file) => /\.(vue|css)$/.test(file))
   .filter((file) => !exempt.has(relative(root, file)))
 

@@ -84,6 +84,29 @@ et transmet le reste à Reka.
 
 1. Créer `src/components/<nom>/` avec `Th<Nom>.vue`, `types.ts` et `index.ts`.
 2. Ajouter `export * from './components/<nom>'` dans `src/index.ts`.
-3. Ajouter sa section dans la page de documentation (le playground en
-   attendant TIB-147).
+3. Créer sa section de documentation `playground/sections/NN-<nom>.vue`. Les
+   fondations sont numérotées de 01 à 09, les composants à partir de 10. La
+   page la trouve seule ; `npm run check:docs` refuse un composant sans
+   section.
+
+   ```vue
+   <script lang="ts">
+   export const section = {
+     title: 'Séparateur',
+     description: 'ThSeparator, basé sur le Separator de Reka UI.',
+   }
+   </script>
+
+   <script setup lang="ts">
+   import { ThSeparator } from '../../src'
+   </script>
+
+   <template>
+     <div class="docs-demo">
+       <p class="docs-label">Horizontal</p>
+       <ThSeparator />
+     </div>
+   </template>
+   ```
+
 4. Lancer `npm run check`, puis `npm run test:consumer`.
