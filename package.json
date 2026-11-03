@@ -27,9 +27,11 @@
   },
   "scripts": {
     "dev": "vite --config playground/vite.config.ts",
-    "build": "npm run typecheck && vite build && vue-tsc -p tsconfig.build.json",
+    "build": "npm run check && vite build && vue-tsc -p tsconfig.build.json",
     "prepare": "npm run build",
+    "check": "npm run typecheck && npm run check:colors",
     "typecheck": "vue-tsc --noEmit -p tsconfig.json && vue-tsc --noEmit -p tsconfig.node.json",
+    "check:colors": "node scripts/check-colors.mjs",
     "test:consumer": "node tests/consumer/run.mjs"
   },
   "peerDependencies": {
@@ -42,5 +44,8 @@
     "vite": "^8.3.5",
     "vue": "^3.5.44",
     "vue-tsc": "^3.3.14"
+  },
+  "dependencies": {
+    "reka-ui": "^2.11.0"
   }
 }

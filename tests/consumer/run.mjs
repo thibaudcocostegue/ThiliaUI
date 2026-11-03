@@ -53,7 +53,14 @@ function checkExternals(dist) {
     .filter((file) => String(file).endsWith('.js'))
     .map((file) => readFileSync(join(dist, String(file)), 'utf8'))
     .join('\n')
-  if (!/from\s*["']vue["']/.test(code)) throw new Error('dist n’importe pas "vue" : il est peut-être embarqué.')
+  for (const dependency of ['vue', 'reka-ui']) {
+    if (!new RegExp(`from\\s*["']${dependency}["']`).test(code)) {
+      throw new Error(`dist n’importe pas "${dependency}" : il est peut-être embarqué.`)
+    }
+  }
   if (/createRenderer|@vue\/runtime-core/.test(code)) throw new Error('dist contient le runtime de Vue.')
-  console.log('\n✓ Vue reste externe au bundle.')
+  // Tout composant présent dans dist doit être un composant ThiliaUI.
+  const foreign = [...code.matchAll(/__name:\s*"([^"]+)"/g)].map((match) => match[1]).filter((name) => !name.startsWith('Th'))
+  if (foreign.length > 0) throw new Error(`dist embarque des composants externes : ${foreign.join(', ')}`)
+  console.log('\n✓ Vue et Reka UI restent externes au bundle.')
 }
