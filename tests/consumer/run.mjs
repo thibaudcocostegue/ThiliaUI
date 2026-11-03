@@ -41,6 +41,7 @@ try {
   run('npm run typecheck', app)
   run('npm run build', app)
   checkFonts(join(pkg, 'dist'), join(app, 'dist'))
+  checkTokens(join(pkg, 'dist'))
   run('npm run ssr', app)
 
   console.log('\n✓ Le paquet s’installe et s’importe dans une app Vue.')
@@ -62,6 +63,17 @@ function checkFonts(dist, appDist) {
     throw new Error(`Polices attendues dans le build de l'app : ${shipped.length}, trouvées : ${bundled.length}`)
   }
   console.log(`\n✓ ${bundled.length} polices locales dans le build de l'app, licences présentes.`)
+}
+
+// Les tokens livrés définissent le mode sombre par défaut et le mode clair.
+function checkTokens(dist) {
+  const css = readFileSync(join(dist, 'tokens.css'), 'utf8')
+  for (const selector of [':root', "[data-thilia-theme='dark']", "[data-thilia-theme='light']"]) {
+    if (!css.includes(selector)) throw new Error(`tokens.css ne contient pas ${selector}`)
+  }
+  const count = new Set([...css.matchAll(/(--thilia-[\w-]+)\s*:/g)].map((match) => match[1])).size
+  if (count === 0) throw new Error('tokens.css ne définit aucun token.')
+  console.log(`\n✓ tokens.css livre ${count} tokens en sombre et en clair.`)
 }
 
 // Vue et Reka UI doivent rester des imports, pas du code embarqué.

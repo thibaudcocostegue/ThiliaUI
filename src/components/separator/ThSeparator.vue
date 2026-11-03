@@ -18,7 +18,7 @@ const { orientation = 'horizontal', decorative = false, as, asChild } = definePr
 <style>
 .th-separator {
   flex-shrink: 0;
-  background-color: var(--thilia-border);
+  background-color: var(--thilia-line);
 }
 
 .th-separator[data-orientation='horizontal'] {
