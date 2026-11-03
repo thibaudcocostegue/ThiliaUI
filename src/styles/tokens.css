@@ -65,6 +65,6 @@
   --thilia-success: #0b6e5a;
   --thilia-warning: #7a5600;
   --thilia-danger: #b3173a;
-  --thilia-danger-hover: #981431; /* à valider : déduit, absent de la planche Composants */
-  --thilia-on-danger: #ffffff; /* à valider : déduit, absent de la planche Composants */
+  --thilia-danger-hover: #981431;
+  --thilia-on-danger: #ffffff;
 }
