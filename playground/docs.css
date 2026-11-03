@@ -1,0 +1,218 @@
+/*
+ * Styles de la page de documentation, d'après la planche Composants.
+ * Couleurs : uniquement des tokens --thilia-*. Tailles, espacements et focus
+ * sont écrits en dur en attendant leurs tokens (TIB-149).
+ */
+
+body {
+  margin: 0;
+  background: var(--thilia-background);
+  color: var(--thilia-text);
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+.docs {
+  max-width: 1200px;
+  padding: 48px 32px 64px;
+  margin: 0 auto;
+}
+
+/* Étiquette mono de la planche : 11/16, capitales, +4 %. */
+.docs-label {
+  margin: 0;
+  font-family: 'Martian Mono', monospace;
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--thilia-text-secondary);
+}
+
+.docs-mono {
+  font-family: 'Martian Mono', monospace;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--thilia-text-secondary);
+}
+
+/* En-tête */
+.docs-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--thilia-line);
+}
+
+.docs-header__title {
+  margin: 0;
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 500;
+}
+
+.docs-header__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Bascule : bouton secondaire de la planche, taille Moyen 40. */
+.docs-toggle {
+  height: 40px;
+  padding: 0 16px;
+  font-family: 'Martian Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--thilia-text);
+  background: transparent;
+  border: 1px solid var(--thilia-border);
+  border-radius: 0;
+  cursor: pointer;
+  transition: border-color 120ms;
+}
+
+.docs-toggle:hover {
+  border-color: var(--thilia-text);
+}
+
+.docs-toggle:focus-visible,
+.docs-nav a:focus-visible {
+  outline: 2px solid var(--thilia-accent);
+  outline-offset: 2px;
+}
+
+/* Navigation */
+.docs-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  padding: 24px 0;
+}
+
+.docs-nav a {
+  text-decoration: none;
+}
+
+.docs-nav a:hover {
+  color: var(--thilia-text);
+}
+
+/* Sections */
+.docs-section {
+  margin-top: 32px;
+  scroll-margin-top: 16px;
+}
+
+.docs-section__body {
+  padding: 24px;
+  margin-top: 16px;
+  background: var(--thilia-surface);
+  border: 1px solid var(--thilia-line);
+}
+
+.docs-section__description {
+  margin: 0 0 24px;
+  color: var(--thilia-text-secondary);
+}
+
+.docs-demo + .docs-demo {
+  margin-top: 24px;
+}
+
+.docs-demo .docs-label {
+  margin-bottom: 8px;
+}
+
+.docs-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  height: 24px;
+}
+
+/* Couleurs */
+.docs-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 24px 16px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.docs-swatches li {
+  display: grid;
+  gap: 4px;
+}
+
+.docs-swatches__color {
+  height: 64px;
+  border: 1px solid var(--thilia-line);
+}
+
+/* Typographie */
+.docs-type {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.docs-type li {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--thilia-line);
+}
+
+.docs-type li:last-child {
+  border-bottom: 0;
+}
+
+.docs-type--display {
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 500;
+}
+
+.docs-type--title-1 {
+  font-size: 28px;
+  line-height: 34px;
+  font-weight: 500;
+}
+
+.docs-type--title-2 {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 500;
+}
+
+.docs-type--body {
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.docs-type--small {
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.docs-type--mono {
+  font-family: 'Martian Mono', monospace;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.docs-type .docs-label {
+  color: var(--thilia-text);
+}

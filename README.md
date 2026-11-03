@@ -36,10 +36,10 @@ Prérequis : Node.js `^20.19.0` ou `>=22.12.0`.
 
 ```sh
 npm install
-npm run dev            # lance le playground
+npm run dev            # lance la page de documentation (bascule clair/sombre)
 npm run typecheck      # vérifie les types
 npm run build          # lance check puis construit dist/
-npm run check          # types, couleurs en dur et tokens
+npm run check          # types, couleurs en dur, tokens et sections de doc
 npm run test:consumer  # installe le paquet dans une app Vue de test
 ```
 
