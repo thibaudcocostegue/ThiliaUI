@@ -6,14 +6,31 @@
   "license": "MIT",
   "author": "Thibaud Maciuk",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens.css": "./dist/tokens.css",
+    "./style.css": "./dist/style.css"
+  },
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
   },
   "scripts": {
-    "dev": "vite",
-    "build": "npm run typecheck && vite build",
-    "preview": "vite preview",
-    "typecheck": "vue-tsc --noEmit -p tsconfig.json && vue-tsc --noEmit -p tsconfig.node.json"
+    "dev": "vite --config playground/vite.config.ts",
+    "build": "npm run typecheck && vite build && vue-tsc -p tsconfig.build.json",
+    "prepare": "npm run build",
+    "typecheck": "vue-tsc --noEmit -p tsconfig.json && vue-tsc --noEmit -p tsconfig.node.json",
+    "test:consumer": "node tests/consumer/run.mjs"
   },
   "peerDependencies": {
     "vue": "^3.5.0"
