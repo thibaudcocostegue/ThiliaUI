@@ -23,11 +23,11 @@ const { orientation = 'horizontal', decorative = false, as, asChild } = definePr
 
 .th-separator[data-orientation='horizontal'] {
   width: 100%;
-  height: 1px;
+  height: var(--thilia-stroke);
 }
 
 .th-separator[data-orientation='vertical'] {
-  width: 1px;
+  width: var(--thilia-stroke);
   height: 100%;
 }
 </style>

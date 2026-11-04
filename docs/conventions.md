@@ -66,13 +66,39 @@ src/
   hexadécimales, les fonctions `rgb()`, `hsl()`, `oklch()`… et les couleurs
   nommées sont refusées par `npm run check:colors`. Seul
   `src/styles/tokens.css` en est exempté.
-- Chaque variable utilisée doit exister en sombre et en clair dans
-  `src/styles/tokens.css` : `npm run check:tokens` le vérifie. Le filet
-  (`--thilia-line`) sert aux séparations, le contour (`--thilia-border`) aux
-  contrôles.
-- Rayon 0, traits de 1 px, aucune ombre (planche Fondations).
-- Les tailles, espacements, durées et le focus utiliseront aussi les tokens
-  dès qu'ils existeront (TIB-149).
+- Chaque variable utilisée doit exister dans `src/styles/tokens.css`, dans le
+  bloc commun ou en sombre et en clair : `npm run check:tokens` le vérifie.
+  Le filet (`--thilia-line`) sert aux séparations, le contour
+  (`--thilia-border`) aux contrôles.
+- Typographie, espacements, hauteurs de contrôle, forme, focus et durées
+  passent aussi par les tokens, définis une fois pour les deux modes :
+
+  | Rôle | Tokens |
+  |---|---|
+  | Texte | `font: var(--thilia-type-body)` (`display`, `title-1`, `title-2`, `body`, `small`, `label`, `mono`) ; l'étiquette ajoute `letter-spacing: var(--thilia-label-tracking)` et `text-transform: uppercase` |
+  | Espacement | `--thilia-space-4` à `--thilia-space-64`, nommés d'après leur valeur en px |
+  | Hauteur de contrôle | `--thilia-control-32`, `-40`, `-48`, pour `size: '32' \| '40' \| '48'` |
+  | Forme | `--thilia-radius` (0), `--thilia-stroke` (1 px), aucune ombre |
+  | Focus | `--thilia-focus-width`, `--thilia-focus-offset`, couleur `--thilia-accent` |
+  | Durée | `--thilia-duration-fast` (survol, focus), `--thilia-duration-panel` (panneaux), à 0 ms si l'utilisateur réduit les animations |
+
+  ```css
+  .th-button {
+    height: var(--thilia-control-40);
+    padding: 0 var(--thilia-space-16);
+    font: var(--thilia-type-body);
+    border: var(--thilia-stroke) solid var(--thilia-border);
+    border-radius: var(--thilia-radius);
+    transition: border-color var(--thilia-duration-fast);
+  }
+
+  .th-button:focus-visible {
+    outline: var(--thilia-focus-width) solid var(--thilia-accent);
+    outline-offset: var(--thilia-focus-offset);
+  }
+  ```
+
+  Pas de courbe de transition imposée : on laisse celle du navigateur.
 
 ## Accessibilité
 

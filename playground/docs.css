@@ -1,41 +1,33 @@
 /*
  * Styles de la page de documentation, d'après la planche Composants.
- * Couleurs : uniquement des tokens --thilia-*. Tailles, espacements et focus
- * sont écrits en dur en attendant leurs tokens (TIB-149).
+ * Couleurs, typographie, espacements, focus et durées : uniquement des tokens
+ * --thilia-*. Seules les dimensions propres à la page restent en dur.
  */
 
 body {
   margin: 0;
   background: var(--thilia-background);
   color: var(--thilia-text);
-  font-family: 'Inter Tight', sans-serif;
-  font-size: 15px;
-  line-height: 22px;
-  font-weight: 400;
+  font: var(--thilia-type-body);
 }
 
 .docs {
   max-width: 1200px;
-  padding: 48px 32px 64px;
+  padding: var(--thilia-space-48) var(--thilia-space-32) var(--thilia-space-64);
   margin: 0 auto;
 }
 
 /* Étiquette mono de la planche : 11/16, capitales, +4 %. */
 .docs-label {
   margin: 0;
-  font-family: 'Martian Mono', monospace;
-  font-size: 11px;
-  line-height: 16px;
-  font-weight: 400;
-  letter-spacing: 0.04em;
+  font: var(--thilia-type-label);
+  letter-spacing: var(--thilia-label-tracking);
   text-transform: uppercase;
   color: var(--thilia-text-secondary);
 }
 
 .docs-mono {
-  font-family: 'Martian Mono', monospace;
-  font-size: 12px;
-  line-height: 18px;
+  font: var(--thilia-type-mono);
   color: var(--thilia-text-secondary);
 }
 
@@ -43,41 +35,38 @@ body {
 .docs-header {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: var(--thilia-space-16);
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--thilia-line);
+  padding-bottom: var(--thilia-space-24);
+  border-bottom: var(--thilia-stroke) solid var(--thilia-line);
 }
 
 .docs-header__title {
   margin: 0;
-  font-size: 40px;
-  line-height: 44px;
-  font-weight: 500;
+  font: var(--thilia-type-display);
 }
 
 .docs-header__meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: var(--thilia-space-16);
   align-items: center;
 }
 
 /* Bascule : bouton secondaire de la planche, taille Moyen 40. */
 .docs-toggle {
-  height: 40px;
-  padding: 0 16px;
-  font-family: 'Martian Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 0.04em;
+  height: var(--thilia-control-40);
+  padding: 0 var(--thilia-space-16);
+  font: var(--thilia-type-mono);
+  letter-spacing: var(--thilia-label-tracking);
   text-transform: uppercase;
   color: var(--thilia-text);
   background: transparent;
-  border: 1px solid var(--thilia-border);
-  border-radius: 0;
+  border: var(--thilia-stroke) solid var(--thilia-border);
+  border-radius: var(--thilia-radius);
   cursor: pointer;
-  transition: border-color 120ms;
+  transition: border-color var(--thilia-duration-fast);
 }
 
 .docs-toggle:hover {
@@ -85,17 +74,18 @@ body {
 }
 
 .docs-toggle:focus-visible,
-.docs-nav a:focus-visible {
-  outline: 2px solid var(--thilia-accent);
-  outline-offset: 2px;
+.docs-nav a:focus-visible,
+.docs-focus:focus-visible {
+  outline: var(--thilia-focus-width) solid var(--thilia-accent);
+  outline-offset: var(--thilia-focus-offset);
 }
 
 /* Navigation */
 .docs-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 24px;
-  padding: 24px 0;
+  gap: var(--thilia-space-8) var(--thilia-space-24);
+  padding: var(--thilia-space-24) 0;
 }
 
 .docs-nav a {
@@ -108,42 +98,42 @@ body {
 
 /* Sections */
 .docs-section {
-  margin-top: 32px;
-  scroll-margin-top: 16px;
+  margin-top: var(--thilia-space-32);
+  scroll-margin-top: var(--thilia-space-16);
 }
 
 .docs-section__body {
-  padding: 24px;
-  margin-top: 16px;
+  padding: var(--thilia-space-24);
+  margin-top: var(--thilia-space-16);
   background: var(--thilia-surface);
-  border: 1px solid var(--thilia-line);
+  border: var(--thilia-stroke) solid var(--thilia-line);
 }
 
 .docs-section__description {
-  margin: 0 0 24px;
+  margin: 0 0 var(--thilia-space-24);
   color: var(--thilia-text-secondary);
 }
 
 .docs-demo + .docs-demo {
-  margin-top: 24px;
+  margin-top: var(--thilia-space-24);
 }
 
 .docs-demo .docs-label {
-  margin-bottom: 8px;
+  margin-bottom: var(--thilia-space-8);
 }
 
 .docs-row {
   display: flex;
-  gap: 12px;
+  gap: var(--thilia-space-12);
   align-items: center;
-  height: 24px;
+  height: var(--thilia-space-24);
 }
 
 /* Couleurs */
 .docs-swatches {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 24px 16px;
+  gap: var(--thilia-space-24) var(--thilia-space-16);
   padding: 0;
   margin: 0;
   list-style: none;
@@ -151,12 +141,12 @@ body {
 
 .docs-swatches li {
   display: grid;
-  gap: 4px;
+  gap: var(--thilia-space-4);
 }
 
 .docs-swatches__color {
-  height: 64px;
-  border: 1px solid var(--thilia-line);
+  height: var(--thilia-space-64);
+  border: var(--thilia-stroke) solid var(--thilia-line);
 }
 
 /* Typographie */
@@ -168,51 +158,90 @@ body {
 
 .docs-type li {
   display: flex;
-  gap: 16px;
+  gap: var(--thilia-space-16);
   align-items: baseline;
   justify-content: space-between;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--thilia-line);
+  padding: var(--thilia-space-12) 0;
+  border-bottom: var(--thilia-stroke) solid var(--thilia-line);
 }
 
 .docs-type li:last-child {
   border-bottom: 0;
 }
 
-.docs-type--display {
-  font-size: 40px;
-  line-height: 44px;
-  font-weight: 500;
-}
-
-.docs-type--title-1 {
-  font-size: 28px;
-  line-height: 34px;
-  font-weight: 500;
-}
-
-.docs-type--title-2 {
-  font-size: 20px;
-  line-height: 26px;
-  font-weight: 500;
-}
-
-.docs-type--body {
-  font-size: 15px;
-  line-height: 22px;
-}
-
-.docs-type--small {
-  font-size: 13px;
-  line-height: 18px;
-}
-
-.docs-type--mono {
-  font-family: 'Martian Mono', monospace;
-  font-size: 12px;
-  line-height: 18px;
+.docs-type__name {
+  display: grid;
+  gap: var(--thilia-space-4);
 }
 
 .docs-type .docs-label {
   color: var(--thilia-text);
+}
+
+/* Espacements et contrôles */
+.docs-scale {
+  display: grid;
+  gap: var(--thilia-space-8);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.docs-scale li {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--thilia-space-16);
+  align-items: center;
+}
+
+.docs-scale__bar {
+  height: var(--thilia-space-8);
+  background: var(--thilia-accent);
+}
+
+.docs-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--thilia-space-16);
+  align-items: flex-end;
+}
+
+.docs-controls__box {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--thilia-space-16);
+  border: var(--thilia-stroke) solid var(--thilia-border);
+}
+
+/* Forme, focus et mouvement */
+.docs-shape {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--thilia-space-24);
+  align-items: center;
+}
+
+.docs-focus {
+  display: flex;
+  align-items: center;
+  height: var(--thilia-control-40);
+  padding: 0 var(--thilia-space-16);
+  background: var(--thilia-surface-raised);
+  border: var(--thilia-stroke) solid var(--thilia-border);
+  border-radius: var(--thilia-radius);
+}
+
+.docs-motion {
+  display: flex;
+  align-items: center;
+  height: var(--thilia-control-40);
+  padding: 0 var(--thilia-space-16);
+  border: var(--thilia-stroke) solid var(--thilia-border);
+  cursor: default;
+}
+
+.docs-motion:hover {
+  color: var(--thilia-on-accent);
+  background: var(--thilia-accent);
+  border-color: var(--thilia-accent);
 }
