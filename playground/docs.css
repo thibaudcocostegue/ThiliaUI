@@ -290,3 +290,8 @@ body {
   justify-items: start;
   max-width: 480px;
 }
+
+.docs-tabs-text {
+  margin: 0;
+  color: var(--thilia-text-secondary);
+}
