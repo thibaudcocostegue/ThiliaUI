@@ -1,6 +1,6 @@
 // Construit le paquet avec un composant de test, l'empaquette comme pour une
 // installation réelle, puis l'installe dans une app Vue qui l'importe.
-import { execSync } from 'node:child_process'
+import { execSync, spawnSync } from 'node:child_process'
 import { appendFileSync, copyFileSync, cpSync, existsSync, mkdtempSync, readdirSync, readFileSync, rmSync, symlinkSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, relative } from 'node:path'
@@ -42,6 +42,7 @@ try {
   run('npm run build', app)
   checkFonts(join(pkg, 'dist'), join(app, 'dist'))
   checkTokens(join(pkg, 'dist'))
+  checkContrast(app)
   run('npm run ssr', app)
 
   console.log('\n✓ Le paquet s’installe et s’importe dans une app Vue.')
@@ -75,6 +76,21 @@ function checkTokens(dist) {
   const count = new Set([...css.matchAll(/(--thilia-[\w-]+)\s*:/g)].map((match) => match[1])).size
   if (count === 0) throw new Error('tokens.css ne définit aucun token.')
   console.log(`\n✓ tokens.css livre ${count} tokens : communs, et couleurs en sombre et en clair.`)
+}
+
+// La commande de contraste est installée avec le paquet : elle valide le thème
+// par défaut et un thème conforme, et refuse un thème en échec.
+function checkContrast(app) {
+  const contrast = (...args) => spawnSync('npx', ['--no-install', 'thiliaui-contrast', ...args], { cwd: app, encoding: 'utf8' })
+  for (const args of [[], [join(here, 'fixtures/theme-ok.css')]]) {
+    const result = contrast(...args)
+    if (result.status !== 0) throw new Error(`thiliaui-contrast ${args.join(' ')} a échoué :\n${result.stdout}${result.stderr}`)
+  }
+  const failing = contrast(join(here, 'fixtures/theme-ko.css'))
+  if (failing.status !== 1 || !failing.stderr.includes('text-secondary sur surface')) {
+    throw new Error(`thiliaui-contrast aurait dû refuser theme-ko.css :\n${failing.stdout}${failing.stderr}`)
+  }
+  console.log('\n✓ thiliaui-contrast valide le thème par défaut et signale les paires en échec.')
 }
 
 // Vue et Reka UI doivent rester des imports, pas du code embarqué.

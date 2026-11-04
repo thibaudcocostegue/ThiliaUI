@@ -57,8 +57,18 @@ import './styles/theme.css'
 
 Un mode peut être surchargé seul : l'autre garde ses valeurs. Toutes les
 couleurs se surchargent de la même façon (liste dans la section Couleurs de
-la page de documentation). Le contraste reste à votre charge : au moins 4,5:1
-entre un texte et son fond.
+la page de documentation).
+
+Vérifiez ensuite les contrastes de votre thème, en sombre et en clair :
+
+```sh
+npx thiliaui-contrast src/styles/theme.css
+```
+
+La commande exige 4,5:1 pour chaque texte sur son fond et 3:1 pour les
+contours de contrôle et l'anneau de focus. Elle liste chaque paire en échec
+et sort en erreur, ce qui permet de la lancer en CI. Les couleurs doivent
+être écrites en `#rgb` ou `#rrggbb`.
 
 Les polices (Inter Tight et Martian Mono) sont incluses dans le paquet et
 fonctionnent hors ligne, sans CDN.
@@ -72,7 +82,7 @@ npm install
 npm run dev            # lance la page de documentation (bascule clair/sombre)
 npm run typecheck      # vérifie les types
 npm run build          # lance check puis construit dist/
-npm run check          # types, couleurs en dur, tokens et sections de doc
+npm run check          # types, couleurs en dur, tokens, contrastes et sections de doc
 npm run test:consumer  # installe le paquet dans une app Vue de test
 ```
 
