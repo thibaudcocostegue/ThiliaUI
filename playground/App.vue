@@ -2,6 +2,7 @@
 import type { Component } from 'vue'
 import DocSection from './components/DocSection.vue'
 import ThemeToggle from './components/ThemeToggle.vue'
+import { ThToaster } from '../src'
 
 interface SectionModule {
   default: Component
@@ -45,5 +46,7 @@ const sections = Object.entries(import.meta.glob<SectionModule>('./sections/*.vu
         <component :is="section.component" />
       </DocSection>
     </main>
+
+    <ThToaster />
   </div>
 </template>

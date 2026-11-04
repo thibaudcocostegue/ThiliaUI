@@ -2,7 +2,13 @@
 
 Bibliothèque de composants Vue 3, écrite en TypeScript.
 
-> En construction : aucun composant n'est encore disponible.
+> En construction : premiers composants disponibles, API susceptible de
+> changer avant la v0.1.0.
+
+Composants : `ThButton`, `ThInput`, `ThSelect`, `ThCheckbox`,
+`ThRadioGroup` et `ThRadio`, `ThSwitch`, `ThTabs`, `ThTooltip`, `ThToaster`
+et `toast`, `ThModal`, `ThGauge`, `ThSeparator`. Chacun a sa section dans la
+page de documentation (`npm run dev`).
 
 ## Utilisation
 
@@ -20,8 +26,12 @@ composants et les composants s'importent séparément :
 import 'thiliaui/fonts.css'
 import 'thiliaui/tokens.css'
 import 'thiliaui/style.css'
-import { ThSeparator } from 'thiliaui'
+import { ThButton } from 'thiliaui'
 ```
+
+Pour les toasts, placez `<ThToaster />` une fois dans l'application, puis
+appelez `toast.success('Service créé')`, `toast.warning(…)` ou
+`toast.danger(…)` depuis n'importe quel fichier.
 
 Le mode sombre s'applique par défaut. Pour le mode clair, posez
 `data-thilia-theme="light"` sur `<html>`, ou sur n'importe quel élément pour
