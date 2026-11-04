@@ -65,15 +65,16 @@ function checkFonts(dist, appDist) {
   console.log(`\n✓ ${bundled.length} polices locales dans le build de l'app, licences présentes.`)
 }
 
-// Les tokens livrés définissent le mode sombre par défaut et le mode clair.
+// Les tokens livrés définissent le bloc commun, le mode sombre par défaut et
+// le mode clair.
 function checkTokens(dist) {
   const css = readFileSync(join(dist, 'tokens.css'), 'utf8')
-  for (const selector of [':root', "[data-thilia-theme='dark']", "[data-thilia-theme='light']"]) {
+  for (const selector of [':root {', "[data-thilia-theme='dark']", "[data-thilia-theme='light']"]) {
     if (!css.includes(selector)) throw new Error(`tokens.css ne contient pas ${selector}`)
   }
   const count = new Set([...css.matchAll(/(--thilia-[\w-]+)\s*:/g)].map((match) => match[1])).size
   if (count === 0) throw new Error('tokens.css ne définit aucun token.')
-  console.log(`\n✓ tokens.css livre ${count} tokens en sombre et en clair.`)
+  console.log(`\n✓ tokens.css livre ${count} tokens : communs, et couleurs en sombre et en clair.`)
 }
 
 // Vue et Reka UI doivent rester des imports, pas du code embarqué.
