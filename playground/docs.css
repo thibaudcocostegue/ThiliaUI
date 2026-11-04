@@ -245,3 +245,19 @@ body {
   background: var(--thilia-accent);
   border-color: var(--thilia-accent);
 }
+
+/* Personnalisation */
+.docs-code {
+  padding: var(--thilia-space-16);
+  margin: 0;
+  overflow-x: auto;
+  font: var(--thilia-type-mono);
+  color: var(--thilia-text);
+  background: var(--thilia-background);
+  border: var(--thilia-stroke) solid var(--thilia-line);
+}
+
+.docs-rules {
+  padding-left: var(--thilia-space-24);
+  margin: 0;
+}

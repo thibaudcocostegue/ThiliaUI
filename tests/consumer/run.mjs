@@ -69,7 +69,7 @@ function checkFonts(dist, appDist) {
 // le mode clair.
 function checkTokens(dist) {
   const css = readFileSync(join(dist, 'tokens.css'), 'utf8')
-  for (const selector of [':root {', "[data-thilia-theme='dark']", "[data-thilia-theme='light']"]) {
+  for (const selector of [':root {', ":root:not([data-thilia-theme='light'])", "[data-thilia-theme='dark']", "[data-thilia-theme='light'] {"]) {
     if (!css.includes(selector)) throw new Error(`tokens.css ne contient pas ${selector}`)
   }
   const count = new Set([...css.matchAll(/(--thilia-[\w-]+)\s*:/g)].map((match) => match[1])).size

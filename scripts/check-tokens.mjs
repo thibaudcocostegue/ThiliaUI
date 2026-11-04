@@ -19,7 +19,9 @@ function definedIn(selector) {
 }
 
 const common = definedIn(':root {')
-const modes = { sombre: definedIn('[data-thilia-theme=\'dark\']'), clair: definedIn('[data-thilia-theme=\'light\']') }
+// Le bloc clair se cherche avec son accolade : le sélecteur sombre contient
+// aussi [data-thilia-theme='light'], dans son :not().
+const modes = { sombre: definedIn('[data-thilia-theme=\'dark\']'), clair: definedIn('[data-thilia-theme=\'light\'] {') }
 const errors = []
 
 for (const [mode, defined] of Object.entries(modes)) {
