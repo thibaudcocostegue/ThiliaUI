@@ -1,0 +1,13 @@
+/* Thème conforme : l'exemple du README. */
+:root:not([data-thilia-theme='light']),
+[data-thilia-theme='dark'] {
+  --thilia-accent: #4d9bff;
+  --thilia-accent-hover: #75b2ff;
+  --thilia-on-accent: #101213;
+}
+
+[data-thilia-theme='light'] {
+  --thilia-accent: #1f5fd1;
+  --thilia-accent-hover: #194fae;
+  --thilia-on-accent: #ffffff;
+}

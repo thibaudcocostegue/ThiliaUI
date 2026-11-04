@@ -261,3 +261,7 @@ body {
   padding-left: var(--thilia-space-24);
   margin: 0;
 }
+
+.docs-rules code {
+  font: var(--thilia-type-mono);
+}

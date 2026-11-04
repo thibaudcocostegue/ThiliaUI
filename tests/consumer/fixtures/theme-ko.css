@@ -1,0 +1,4 @@
+/* Thème en échec : texte secondaire trop pâle en clair. */
+[data-thilia-theme='light'] {
+  --thilia-text-secondary: #9aa0a2;
+}

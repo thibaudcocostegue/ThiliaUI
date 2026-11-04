@@ -70,6 +70,9 @@ src/
   bloc commun ou en sombre et en clair : `npm run check:tokens` le vérifie.
   Le filet (`--thilia-line`) sert aux séparations, le contour
   (`--thilia-border`) aux contrôles.
+- Les contrastes des couleurs sont vérifiés par `npm run check:contrast` :
+  4,5:1 pour le texte, 3:1 pour les contours. Une nouvelle couleur de texte
+  ou de contour s'ajoute aux paires de `scripts/check-contrast.mjs`.
 - Typographie, espacements, hauteurs de contrôle, forme, focus et durées
   passent aussi par les tokens, définis une fois pour les deux modes :
 

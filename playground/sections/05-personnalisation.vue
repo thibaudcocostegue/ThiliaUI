@@ -43,7 +43,10 @@ import 'thiliaui/style.css'`
       <li>Reprendre exactement les deux sélecteurs : le premier vise le sombre, le second le clair.</li>
       <li>Ne lister que les variables changées. Un mode peut être surchargé seul, l’autre garde ses valeurs.</li>
       <li>Toutes les couleurs de la section Couleurs se surchargent de la même façon.</li>
-      <li>Le contraste reste à la charge du projet : au moins 4,5:1 entre un texte et son fond.</li>
+      <li>
+        Vérifier les contrastes avec <code>npx thiliaui-contrast src/styles/theme.css</code> : 4,5:1 pour le texte,
+        3:1 pour les contours de contrôle et le focus.
+      </li>
     </ul>
   </div>
 </template>
