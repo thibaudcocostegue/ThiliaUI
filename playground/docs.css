@@ -265,3 +265,15 @@ body {
 .docs-rules code {
   font: var(--thilia-type-mono);
 }
+
+/* Composants : tableau variante × état */
+.docs-matrix {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--thilia-space-16) var(--thilia-space-24);
+  align-items: center;
+}
+
+.docs-matrix .docs-label {
+  margin: 0;
+}
