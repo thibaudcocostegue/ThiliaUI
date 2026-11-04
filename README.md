@@ -27,6 +27,39 @@ Le mode sombre s'applique par défaut. Pour le mode clair, posez
 `data-thilia-theme="light"` sur `<html>`, ou sur n'importe quel élément pour
 une zone dans l'autre mode.
 
+### Personnaliser les couleurs
+
+Chaque couleur est une variable CSS `--thilia-*`. Pour en changer, créez une
+feuille dans votre projet et importez-la juste après `thiliaui/tokens.css`.
+Reprenez les deux sélecteurs ci-dessous, le premier pour le mode sombre, le
+second pour le mode clair, et ne listez que les variables à changer :
+
+```css
+/* src/styles/theme.css */
+:root:not([data-thilia-theme='light']),
+[data-thilia-theme='dark'] {
+  --thilia-accent: #4d9bff;
+  --thilia-accent-hover: #75b2ff;
+  --thilia-on-accent: #101213;
+}
+
+[data-thilia-theme='light'] {
+  --thilia-accent: #1f5fd1;
+  --thilia-accent-hover: #194fae;
+  --thilia-on-accent: #ffffff;
+}
+```
+
+```ts
+import 'thiliaui/tokens.css'
+import './styles/theme.css'
+```
+
+Un mode peut être surchargé seul : l'autre garde ses valeurs. Toutes les
+couleurs se surchargent de la même façon (liste dans la section Couleurs de
+la page de documentation). Le contraste reste à votre charge : au moins 4,5:1
+entre un texte et son fond.
+
 Les polices (Inter Tight et Martian Mono) sont incluses dans le paquet et
 fonctionnent hors ligne, sans CDN.
 

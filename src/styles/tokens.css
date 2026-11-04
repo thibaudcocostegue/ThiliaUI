@@ -11,7 +11,9 @@
  * (data-thilia-theme="dark" force le sombre).
  *
  * Un projet peut remplacer ces variables dans une feuille importée après
- * celle-ci (voir TIB-150).
+ * celle-ci, en reprenant les deux mêmes sélecteurs de mode (voir README).
+ * Les blocs sombre et clair ne visent jamais le même élément : surcharger un
+ * seul mode ne touche pas l'autre.
  */
 
 :root {
@@ -70,7 +72,7 @@
   }
 }
 
-:root,
+:root:not([data-thilia-theme='light']),
 [data-thilia-theme='dark'] {
   color-scheme: dark;
 
