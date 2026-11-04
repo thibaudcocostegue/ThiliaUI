@@ -1,24 +1,23 @@
 <script setup lang="ts">
-import { computed, useId } from 'vue'
+import { computed } from 'vue'
 import { ProgressIndicator, ProgressRoot } from 'reka-ui'
 import type { ThGaugeProps } from './types'
 
 const { value, max = 100, label, showValue = true, valueText } = defineProps<ThGaugeProps>()
 
-const labelId = useId()
 const percent = computed(() => (value === null ? null : Math.round((Math.min(Math.max(value, 0), max) / max) * 100)))
 </script>
 
 <template>
   <div class="th-gauge">
-    <p :id="labelId" class="th-gauge__label">
+    <p class="th-gauge__label" aria-hidden="true">
       {{ label }}<template v-if="showValue && percent !== null"> · {{ percent }} %</template>
     </p>
     <ProgressRoot
       class="th-gauge__track"
       :model-value="value"
       :max="max"
-      :aria-labelledby="labelId"
+      :get-value-label="() => label"
       :get-value-text="valueText ? () => valueText : undefined"
     >
       <ProgressIndicator v-if="percent !== null" class="th-gauge__fill" :style="{ '--th-gauge-percent': `${percent}%` }" />

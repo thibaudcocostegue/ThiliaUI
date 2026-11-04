@@ -2,7 +2,7 @@
 export const section = {
   title: 'Jauge graduée',
   description:
-    'ThGauge, basé sur le Progress de Reka UI. Graduations de 2 px espacées de 4 px, en accent sur fond de filet. Les lecteurs d’écran lisent l’étiquette et la valeur (role="progressbar").',
+    'ThGauge, basé sur le Progress de Reka UI. Graduations de 2 px espacées de 4 px, en accent sur fond de filet. Les lecteurs d’écran lisent l’étiquette et la valeur (role="progressbar", aria-label, aria-valuenow).',
 }
 </script>
 

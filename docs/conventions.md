@@ -1,7 +1,9 @@
 # Conventions des composants
 
 Ces règles valent pour chaque composant de ThiliaUI. `ThSeparator`
-(`src/components/separator/`) les applique et sert de modèle.
+(`src/components/separator/`) les applique et sert de modèle minimal ;
+`ThButton` (`src/components/button/`) sert de modèle pour les variantes, les
+tailles et les états.
 
 ## Nommage
 
@@ -55,6 +57,16 @@ src/
 - `v-model` passe par `defineModel()`.
 - Les attributs non déclarés (`class`, `id`, `aria-*`, écouteurs) sont transmis
   à l'élément racine. On ne désactive pas `inheritAttrs` sans raison.
+  Exception : un champ enveloppé d'un libellé (`ThInput`) garde `class` et
+  `style` sur la racine et passe le reste (`placeholder`, `name`…) au champ.
+- Un champ de formulaire porte son libellé (`label`), relié par `for`/`id`.
+  L'`id` est généré par `useId()` s'il n'est pas fourni.
+- Quand un composant a des parties répétées, on les expose en composants
+  séparés (`ThRadioGroup` et `ThRadio`) ou en liste de données (`options` de
+  `ThSelect`, `tabs` de `ThTabs`), selon ce qui reste le plus court à écrire.
+- Les panneaux flottants (liste du select, infobulle, modale, toasts) passent
+  par le portail de Reka, rendu dans `<body>` : ils suivent le mode posé sur
+  `<html>`, pas celui d'une zone `data-thilia-theme` locale.
 
 ## Styles
 

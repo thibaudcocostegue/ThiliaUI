@@ -2,7 +2,7 @@ export interface ThGaugeProps {
   /** Valeur entre 0 et `max`. `null` : progression inconnue. */
   value: number | null
   max?: number
-  /** Étiquette mono au-dessus de la jauge, qui lui sert aussi de nom accessible. */
+  /** Étiquette mono au-dessus de la jauge, qui lui sert aussi de nom accessible (aria-label). */
   label: string
   /** Affiche le pourcentage après l'étiquette. */
   showValue?: boolean
