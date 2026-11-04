@@ -17,6 +17,8 @@ const pairs = [
   ...['text', 'text-secondary', 'success', 'warning', 'danger'].flatMap((fg) => surfaces.map((bg) => [fg, bg, text])),
   ...['accent', 'accent-hover'].map((bg) => ['on-accent', bg, text]),
   ...['danger', 'danger-hover'].map((bg) => ['on-danger', bg, text]),
+  // Infobulle : fond inversé.
+  ['background', 'text', text],
   // Contour des contrôles et anneau de focus.
   ...['border', 'accent'].flatMap((fg) => surfaces.map((bg) => [fg, bg, outline])),
 ]
