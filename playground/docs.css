@@ -283,3 +283,10 @@ body {
   gap: var(--thilia-space-16);
   max-width: 480px;
 }
+
+.docs-choices {
+  display: grid;
+  gap: var(--thilia-space-16);
+  justify-items: start;
+  max-width: 480px;
+}
