@@ -1,0 +1,132 @@
+/*
+ * Tokens ThiliaUI · thème Télémétrie (thème par défaut).
+ * Source : planches Fondations et Composants (tokens v0.1).
+ *
+ * Le premier bloc regroupe les tokens communs aux deux modes : typographie,
+ * espacements, hauteurs de contrôle, forme, focus et mouvement. Les blocs
+ * suivants définissent les couleurs.
+ *
+ * Mode sombre par défaut. Pour le mode clair, poser data-thilia-theme="light"
+ * sur <html>, ou sur n'importe quel élément pour une zone dans l'autre mode
+ * (data-thilia-theme="dark" force le sombre).
+ *
+ * Un projet peut remplacer ces variables dans une feuille importée après
+ * celle-ci, en reprenant les deux mêmes sélecteurs de mode (voir README).
+ * Les blocs sombre et clair ne visent jamais le même élément : surcharger un
+ * seul mode ne touche pas l'autre.
+ */
+
+:root {
+  /* Polices (servies par fonts.css) */
+  --thilia-font-sans: 'Inter Tight', system-ui, sans-serif;
+  --thilia-font-mono: 'Martian Mono', ui-monospace, monospace;
+
+  /* Échelle typographique : raccourcis pour la propriété font (taille/interligne) */
+  --thilia-type-display: 500 40px/44px var(--thilia-font-sans);
+  --thilia-type-title-1: 500 28px/34px var(--thilia-font-sans);
+  --thilia-type-title-2: 500 20px/26px var(--thilia-font-sans);
+  --thilia-type-body: 400 15px/22px var(--thilia-font-sans);
+  --thilia-type-small: 400 13px/18px var(--thilia-font-sans);
+  --thilia-type-mono: 400 12px/18px var(--thilia-font-mono);
+
+  /* Étiquette mono, en capitales (text-transform: uppercase) */
+  --thilia-type-label: 400 11px/16px var(--thilia-font-mono);
+  --thilia-label-tracking: 0.04em;
+
+  /* Espacements, nommés d'après leur valeur en px */
+  --thilia-space-4: 4px;
+  --thilia-space-8: 8px;
+  --thilia-space-12: 12px;
+  --thilia-space-16: 16px;
+  --thilia-space-24: 24px;
+  --thilia-space-32: 32px;
+  --thilia-space-48: 48px;
+  --thilia-space-64: 64px;
+
+  /* Hauteurs de contrôle, pour size: '32' | '40' | '48' */
+  --thilia-control-32: 32px;
+  --thilia-control-40: 40px;
+  --thilia-control-48: 48px;
+
+  /* Forme : rayon nul, traits de 1 px, aucune ombre */
+  --thilia-radius: 0;
+  --thilia-stroke: 1px;
+
+  /*
+   * Focus : anneau de 2 px décalé de 2 px, couleur var(--thilia-accent).
+   * La couleur n'a pas de token ici : définie dans ce bloc, elle serait figée
+   * au mode de <html> et fausse dans une zone de l'autre mode.
+   */
+  --thilia-focus-width: 2px;
+  --thilia-focus-offset: 2px;
+
+  /* Mouvement : réactions (survol, focus) et panneaux */
+  --thilia-duration-fast: 120ms;
+  --thilia-duration-panel: 200ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --thilia-duration-fast: 0ms;
+    --thilia-duration-panel: 0ms;
+  }
+}
+
+:root:not([data-thilia-theme='light']),
+[data-thilia-theme='dark'] {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --thilia-background: #101213;
+  --thilia-surface: #15181a;
+  --thilia-surface-raised: #1c2023;
+
+  /* Traits : filet (séparations) et contour (contrôles) */
+  --thilia-line: #2b3033;
+  --thilia-border: #6e7679;
+
+  /* Texte */
+  --thilia-text: #e8eae6;
+  --thilia-text-secondary: #98a09f;
+
+  /* Accent */
+  --thilia-accent: #ff6a1a;
+  --thilia-accent-hover: #ff8442;
+  --thilia-on-accent: #101213;
+
+  /* États */
+  --thilia-success: #3cc7a5;
+  --thilia-warning: #f2c14e;
+  --thilia-danger: #f2617a;
+  --thilia-danger-hover: #f58398;
+  --thilia-on-danger: #101213;
+}
+
+[data-thilia-theme='light'] {
+  color-scheme: light;
+
+  /* Surfaces */
+  --thilia-background: #eff0ee;
+  --thilia-surface: #f8f9f8;
+  --thilia-surface-raised: #ffffff;
+
+  /* Traits : filet (séparations) et contour (contrôles) */
+  --thilia-line: #c9cdcb;
+  --thilia-border: #7e8688;
+
+  /* Texte */
+  --thilia-text: #15181a;
+  --thilia-text-secondary: #586062;
+
+  /* Accent */
+  --thilia-accent: #b83c06;
+  --thilia-accent-hover: #9c3205;
+  --thilia-on-accent: #ffffff;
+
+  /* États */
+  --thilia-success: #0b6e5a;
+  --thilia-warning: #7a5600;
+  --thilia-danger: #b3173a;
+  --thilia-danger-hover: #981431;
+  --thilia-on-danger: #ffffff;
+}
