@@ -1,0 +1,30 @@
+<!-- @dsCard height=288 -->
+<style>
+.cover{position:relative;width:960px;height:288px;overflow:hidden;background:var(--thilia-bg);color:var(--thilia-fg)}
+.cover svg{position:absolute;inset:0;display:block}
+.accent{fill:var(--thilia-accent)}
+.ink{fill:var(--thilia-fg)}
+.steel{fill:var(--thilia-outline)}
+.plus{fill:none;stroke:var(--thilia-outline);stroke-width:2}
+.mark{position:absolute;left:32px;bottom:32px;width:440px}
+.name{margin:0;font:500 88px/.95 var(--font-sans);letter-spacing:-.02em}
+.tagline{margin:12px 0 0;font:400 14px/20px var(--font-sans);color:var(--thilia-muted)}
+</style>
+<div class="cover">
+  <svg width="960" height="288" viewBox="0 0 960 288" aria-hidden="true">
+    <!--
+      blocs : thilia-accent 320×192 (multiples de thilia-space-32), thilia-fg 160×96, thilia-outline 160×96
+      composition : dalle accent débordant du coin haut droit, deux blocs modulaires dessous
+      motif : grille de croix, car le système se dit précis et technique, avec thilia-grid-pitch en écho
+      échelles : pas thilia-space-32, angles thilia-radius (0)
+    -->
+    <rect class="accent" x="640" y="0" width="320" height="192"></rect>
+    <rect class="ink" x="640" y="192" width="160" height="96"></rect>
+    <rect class="steel" x="800" y="192" width="160" height="96"></rect>
+    <path class="plus" d="M512 26v12M506 32h12M544 26v12M538 32h12M576 26v12M570 32h12M608 26v12M602 32h12M512 58v12M506 64h12M544 58v12M538 64h12M576 58v12M570 64h12M608 58v12M602 64h12M512 90v12M506 96h12M544 90v12M538 96h12M576 90v12M570 96h12M608 90v12M602 96h12M512 122v12M506 128h12M544 122v12M538 128h12M576 122v12M570 128h12M608 122v12M602 128h12M512 154v12M506 160h12M544 154v12M538 160h12M576 154v12M570 160h12M608 154v12M602 160h12M512 186v12M506 192h12M544 186v12M538 192h12M576 186v12M570 192h12M608 186v12M602 192h12M512 218v12M506 224h12M544 218v12M538 224h12M576 218v12M570 224h12M608 218v12M602 224h12M512 250v12M506 256h12M544 250v12M538 256h12M576 250v12M570 256h12M608 250v12M602 256h12"></path>
+  </svg>
+  <div class="mark">
+    <p class="name">ThiliaUI</p>
+    <p class="tagline">Simplicité et haute technologie, pour toutes vos applications Vue.js.</p>
+  </div>
+</div>

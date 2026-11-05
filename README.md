@@ -4,8 +4,19 @@ Bibliothèque de composants Vue 3, écrite en TypeScript.
 
 Composants : `ThButton`, `ThInput`, `ThSelect`, `ThCheckbox`,
 `ThRadioGroup` et `ThRadio`, `ThSwitch`, `ThTabs`, `ThTooltip`, `ThToaster`
-et `toast`, `ThModal`, `ThGauge`, `ThSeparator`. Chacun a sa section dans la
-page de documentation (`npm run dev`).
+et `toast`, `ThModal`, `ThGauge`, `ThSeparator`.
+
+Extensions, ajoutées d'après la planche de design :
+
+- Formulaire : `ThLabel`, `ThField`, `ThCheckboxGroup`, `ThListbox`,
+  `ThCombobox`, `ThAutocomplete`, `ThNumberField`, `ThPinInput`, `ThSlider`,
+  `ThTagsInput`, `ThEditable`, `ThRating`, `ThToggle`, `ThToggleGroup`.
+- Overlays : `ThAlertDialog`, `ThDrawer`, `ThHoverCard`, `ThPopover`.
+- Menus : `ThDropdownMenu`, `ThContextMenu`, `ThMenubar`, `ThNavigationMenu`,
+  `ThToolbar` (avec `ThToolbarButton`, `ThToolbarToggle` et
+  `ThToolbarSeparator`).
+
+Chacun a sa section dans la page de documentation (`npm run dev`).
 
 ## Installation
 
@@ -14,10 +25,10 @@ tag. Le `dist` est déjà construit dans le tag : rien n'est compilé à
 l'installation.
 
 ```sh
-npm install git+ssh://git@github.com/thibaudcocostegue/ThiliaUI.git#v0.0.1
+npm install git+ssh://git@github.com/thibaudcocostegue/ThiliaUI.git#v0.0.2
 ```
 
-Pour mettre à jour, changez le tag (`#v0.0.2`, par exemple) et relancez la
+Pour mettre à jour, changez le tag (`#v0.0.3`, par exemple) et relancez la
 commande. Vue `^3.5` doit être installé dans l'application. Reka UI est
 installé automatiquement avec le paquet.
 

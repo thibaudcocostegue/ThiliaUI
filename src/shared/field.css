@@ -1,0 +1,22 @@
+/* Libellé, aide et erreur communs aux champs de formulaire. */
+.th-field {
+  display: grid;
+  gap: var(--thilia-space-8);
+  min-width: 0;
+}
+
+.th-field__label {
+  font: var(--thilia-type-small);
+  font-weight: 500;
+  color: var(--thilia-text);
+}
+
+.th-field__help {
+  margin: 0;
+  font: var(--thilia-type-small);
+  color: var(--thilia-text-secondary);
+}
+
+.th-field[data-invalid] .th-field__help {
+  color: var(--thilia-danger);
+}

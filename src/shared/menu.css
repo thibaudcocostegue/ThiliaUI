@@ -1,0 +1,70 @@
+/* Habillage commun des menus (menu déroulant, menu contextuel, barre de menus). */
+.th-menu {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-height: var(--reka-popper-available-height);
+  padding: var(--thilia-space-4);
+  overflow-y: auto;
+  color: var(--thilia-text);
+  background: var(--thilia-surface-raised);
+  border: var(--thilia-stroke) solid var(--thilia-border);
+  border-radius: var(--thilia-radius);
+}
+
+.th-menu__item {
+  display: flex;
+  gap: var(--thilia-space-16);
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: var(--thilia-control-32);
+  padding: 0 var(--thilia-space-8);
+  font: var(--thilia-type-small);
+  color: var(--thilia-text);
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+.th-menu__item[data-highlighted] {
+  background: var(--thilia-line);
+}
+
+.th-menu__item[data-disabled] {
+  color: var(--thilia-text-secondary);
+  background: transparent;
+  cursor: not-allowed;
+}
+
+.th-menu__item[data-variant='danger'] {
+  color: var(--thilia-danger);
+}
+
+.th-menu__item[data-variant='danger'][data-highlighted] {
+  color: var(--thilia-on-danger);
+  background: var(--thilia-danger);
+}
+
+.th-menu__shortcut {
+  font: var(--thilia-type-mono);
+  font-size: 11px;
+  color: var(--thilia-text-secondary);
+}
+
+.th-menu__item[data-highlighted] .th-menu__shortcut {
+  color: inherit;
+}
+
+.th-menu__label {
+  padding: var(--thilia-space-8) var(--thilia-space-8) var(--thilia-space-4);
+  font: var(--thilia-type-label);
+  letter-spacing: var(--thilia-label-tracking);
+  text-transform: uppercase;
+  color: var(--thilia-text-secondary);
+}
+
+.th-menu__separator {
+  height: var(--thilia-stroke);
+  margin: var(--thilia-space-4) 0;
+  background: var(--thilia-line);
+}
