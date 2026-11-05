@@ -5,6 +5,10 @@ node_modules/
 dist/
 *.tsbuildinfo
 
+# Tests
+test-results/
+playwright-report/
+
 # Logs
 npm-debug.log*
 *.log

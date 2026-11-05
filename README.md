@@ -94,6 +94,7 @@ npm run typecheck      # vérifie les types
 npm run build          # lance check puis construit dist/
 npm run check          # types, couleurs en dur, tokens, contrastes et sections de doc
 npm run test:consumer  # installe le paquet dans une app Vue de test
+npm run test:keyboard  # parcourt la doc au clavier, en clair et en sombre (Chrome requis)
 ```
 
 Les règles d'écriture des composants sont dans

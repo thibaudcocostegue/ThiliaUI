@@ -40,12 +40,14 @@
     "check:tokens": "node scripts/check-tokens.mjs",
     "check:contrast": "node scripts/check-contrast.mjs",
     "check:docs": "node scripts/check-docs.mjs",
-    "test:consumer": "node tests/consumer/run.mjs"
+    "test:consumer": "node tests/consumer/run.mjs",
+    "test:keyboard": "playwright test"
   },
   "peerDependencies": {
     "vue": "^3.5.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.1",
     "@types/node": "^26.6.6",
     "@vitejs/plugin-vue": "^6.0.10",
     "typescript": "^6.0.3",
