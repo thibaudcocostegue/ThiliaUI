@@ -121,6 +121,17 @@ Le comportement clavier, le focus et les attributs ARIA viennent de Reka UI.
 On ne les réimplémente pas : le composant ThiliaUI ajoute le style et l'API,
 et transmet le reste à Reka.
 
+Tout élément focalisable porte l'anneau de focus (`:focus-visible`, voir le
+tableau des tokens). Quand l'élément touche un bord qui couperait l'anneau
+(onglet, bouton fermer, zone des toasts), le décalage passe à
+`calc(-1 * var(--thilia-focus-width))` pour le dessiner à l'intérieur.
+
+`npm run test:keyboard` pilote la page de documentation au clavier dans le
+Chrome installé, en sombre et en clair (`tests/keyboard/`). Il fait le tour de
+la page avec Tab et vérifie l'anneau de chaque élément atteint, puis déroule le
+parcours clavier de chaque composant : touches, retour du focus, piège de la
+modale.
+
 ## Ajouter un composant
 
 1. Créer `src/components/<nom>/` avec `Th<Nom>.vue`, `types.ts` et `index.ts`.
@@ -150,4 +161,7 @@ et transmet le reste à Reka.
    </template>
    ```
 
-4. Lancer `npm run check`, puis `npm run test:consumer`.
+4. Si le composant se manipule au clavier, ajouter son parcours dans
+   `tests/keyboard/keyboard.spec.ts`.
+5. Lancer `npm run check`, `npm run test:keyboard`, puis
+   `npm run test:consumer`.

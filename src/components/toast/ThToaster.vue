@@ -39,6 +39,12 @@ const allLabels = computed(() => ({ success: 'Succès', warning: 'Alerte', dange
   padding: 0;
 }
 
+/* F8 met le focus sur la zone ; l'anneau reste à l'intérieur, la zone touche le bord de l'écran. */
+.th-toaster:focus-visible {
+  outline: var(--thilia-focus-width) solid var(--thilia-accent);
+  outline-offset: calc(-1 * var(--thilia-focus-width));
+}
+
 .th-toast {
   position: relative;
   display: grid;
