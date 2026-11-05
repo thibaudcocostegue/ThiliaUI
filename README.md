@@ -10,13 +10,14 @@ page de documentation (`npm run dev`).
 ## Installation
 
 Le paquet n'est pas publié sur npm : il s'installe depuis Git, fixé sur un
-tag. npm le construit à l'installation.
+tag. Le `dist` est déjà construit dans le tag : rien n'est compilé à
+l'installation.
 
 ```sh
-npm install git+ssh://git@github.com/thibaudcocostegue/ThiliaUI.git#v0.1.0
+npm install git+ssh://git@github.com/thibaudcocostegue/ThiliaUI.git#v0.0.1
 ```
 
-Pour mettre à jour, changez le tag (`#v0.2.0`, par exemple) et relancez la
+Pour mettre à jour, changez le tag (`#v0.0.2`, par exemple) et relancez la
 commande. Vue `^3.5` doit être installé dans l'application. Reka UI est
 installé automatiquement avec le paquet.
 

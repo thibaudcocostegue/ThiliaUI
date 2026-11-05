@@ -1,6 +1,6 @@
 {
   "name": "thiliaui",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "description": "Bibliothèque de composants Vue 3.",
   "license": "MIT",
@@ -33,7 +33,6 @@
   "scripts": {
     "dev": "vite --config playground/vite.config.ts",
     "build": "npm run check && vite build && vue-tsc -p tsconfig.build.json",
-    "prepare": "npm run build",
     "check": "npm run typecheck && npm run check:colors && npm run check:tokens && npm run check:contrast && npm run check:docs",
     "typecheck": "vue-tsc --noEmit -p tsconfig.json && vue-tsc --noEmit -p tsconfig.node.json",
     "check:colors": "node scripts/check-colors.mjs",
