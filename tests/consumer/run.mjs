@@ -28,7 +28,8 @@ try {
   copyFileSync(join(here, 'fixtures/ThFixture.vue'), join(pkg, 'src/ThFixture.vue'))
   appendFileSync(join(pkg, 'src/index.ts'), "export { default as ThFixture } from './ThFixture.vue'\n")
 
-  // npm pack lance le script prepare, donc le build, comme une installation depuis Git.
+  // Le tag publié contient dist/ : on le construit ici avant d'empaqueter.
+  run('npm run build', pkg)
   run(`npm pack --pack-destination ${JSON.stringify(work)}`, pkg)
   checkExternals(join(pkg, 'dist'))
   const tarball = readdirSync(work).find((name) => name.endsWith('.tgz'))
