@@ -2,42 +2,78 @@
 
 Bibliothèque de composants Vue 3, écrite en TypeScript.
 
-> En construction : premiers composants disponibles, API susceptible de
-> changer avant la v0.1.0.
-
 Composants : `ThButton`, `ThInput`, `ThSelect`, `ThCheckbox`,
 `ThRadioGroup` et `ThRadio`, `ThSwitch`, `ThTabs`, `ThTooltip`, `ThToaster`
 et `toast`, `ThModal`, `ThGauge`, `ThSeparator`. Chacun a sa section dans la
 page de documentation (`npm run dev`).
 
-## Utilisation
+## Installation
 
-Le paquet s'installe depuis Git. npm le construit à l'installation.
+Le paquet n'est pas publié sur npm : il s'installe depuis Git, fixé sur un
+tag. npm le construit à l'installation.
 
 ```sh
-npm install git+ssh://git@github.com/thibaudcocostegue/ThiliaUI.git
+npm install git+ssh://git@github.com/thibaudcocostegue/ThiliaUI.git#v0.1.0
 ```
 
-Vue `^3.5` doit être installé dans l'application. Reka UI est installé
-automatiquement avec le paquet. Les polices, les tokens, le CSS des
-composants et les composants s'importent séparément :
+Pour mettre à jour, changez le tag (`#v0.2.0`, par exemple) et relancez la
+commande. Vue `^3.5` doit être installé dans l'application. Reka UI est
+installé automatiquement avec le paquet.
+
+## Démarrage rapide
+
+Les polices, les tokens et le CSS des composants s'importent une fois, à
+l'entrée de l'application :
 
 ```ts
+// src/main.ts
+import { createApp } from 'vue'
 import 'thiliaui/fonts.css'
 import 'thiliaui/tokens.css'
 import 'thiliaui/style.css'
-import { ThButton } from 'thiliaui'
+import App from './App.vue'
+
+createApp(App).mount('#app')
 ```
 
-Pour les toasts, placez `<ThToaster />` une fois dans l'application, puis
-appelez `toast.success('Service créé')`, `toast.warning(…)` ou
-`toast.danger(…)` depuis n'importe quel fichier.
+Les composants s'importent depuis `thiliaui` :
+
+```vue
+<!-- src/App.vue -->
+<script setup lang="ts">
+import { ref } from 'vue'
+import { ThButton, ThInput, ThToaster, toast } from 'thiliaui'
+
+const name = ref('')
+</script>
+
+<template>
+  <ThInput v-model="name" label="Nom du service" />
+  <ThButton @click="toast.success('Service créé')">Créer</ThButton>
+  <ThToaster />
+</template>
+```
+
+`<ThToaster />` se place une fois dans l'application. `toast.success(…)`,
+`toast.warning(…)` et `toast.danger(…)` s'appellent ensuite depuis
+n'importe quel fichier.
+
+## Clair et sombre
 
 Le mode sombre s'applique par défaut. Pour le mode clair, posez
-`data-thilia-theme="light"` sur `<html>`, ou sur n'importe quel élément pour
-une zone dans l'autre mode.
+`data-thilia-theme="light"` sur `<html>` ; `"dark"` force le sombre. Posé sur
+un autre élément, l'attribut change le mode de cette zone seulement.
 
-### Personnaliser les couleurs
+```ts
+function setTheme(theme: 'light' | 'dark') {
+  document.documentElement.dataset.thiliaTheme = theme
+}
+```
+
+Le mode ne suit pas `prefers-color-scheme` : c'est à l'application de choisir
+et, si besoin, de mémoriser le choix.
+
+## Personnaliser les couleurs
 
 Chaque couleur est une variable CSS `--thilia-*`. Pour en changer, créez une
 feuille dans votre projet et importez-la juste après `thiliaui/tokens.css`.
@@ -80,8 +116,10 @@ contours de contrôle et l'anneau de focus. Elle liste chaque paire en échec
 et sort en erreur, ce qui permet de la lancer en CI. Les couleurs doivent
 être écrites en `#rgb` ou `#rrggbb`.
 
-Les polices (Inter Tight et Martian Mono) sont incluses dans le paquet et
-fonctionnent hors ligne, sans CDN.
+## Polices
+
+Inter Tight et Martian Mono sont incluses dans le paquet et fonctionnent
+hors ligne, sans CDN. Elles se chargent avec `thiliaui/fonts.css`.
 
 ## Développement
 
