@@ -295,3 +295,46 @@ body {
   margin: 0;
   color: var(--thilia-text-secondary);
 }
+
+/* Éléments natifs des démonstrations des composants d'extension. */
+.docs-native {
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--thilia-control-40);
+  padding: 0 var(--thilia-space-16);
+  font: var(--thilia-type-body);
+  color: var(--thilia-text);
+  background: var(--thilia-surface-raised);
+  border: var(--thilia-stroke) solid var(--thilia-border);
+  border-radius: var(--thilia-radius);
+}
+
+.docs-native[aria-invalid='true'] {
+  border-color: var(--thilia-danger);
+}
+
+.docs-native:focus-visible,
+.docs-link:focus-visible,
+.docs-zone:focus-visible {
+  outline: var(--thilia-focus-width) solid var(--thilia-accent);
+  outline-offset: var(--thilia-focus-offset);
+}
+
+.docs-link {
+  color: var(--thilia-text);
+  text-decoration: underline;
+  text-decoration-color: var(--thilia-border);
+  text-underline-offset: 3px;
+}
+
+.docs-zone {
+  padding: var(--thilia-space-16);
+  font: var(--thilia-type-small);
+  color: var(--thilia-text-secondary);
+  border: var(--thilia-stroke) dashed var(--thilia-border);
+}
+
+/* Le panneau de navigation est positionné sous la barre : on lui réserve la place. */
+.docs-nav-demo {
+  min-height: 200px;
+}

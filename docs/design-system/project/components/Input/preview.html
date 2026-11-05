@@ -1,0 +1,20 @@
+<!-- @dsCard group="Formulaires" height=280 subtitle="Défaut, focus, erreur, désactivé" -->
+<div class="thilia-demo" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr))">
+  <div class="thilia-field">
+    <label class="thilia-field-label" for="i1">Nom du service</label>
+    <input class="thilia-input" id="i1" placeholder="Passerelle">
+  </div>
+  <div class="thilia-field">
+    <label class="thilia-field-label" for="i2">Focus</label>
+    <input class="thilia-input is-focus" id="i2" value="Passerelle">
+  </div>
+  <div class="thilia-field">
+    <label class="thilia-field-label" for="i3">Identifiant</label>
+    <input class="thilia-input" id="i3" value="passerelle!" aria-invalid="true" aria-describedby="i3-aide">
+    <span class="thilia-field-help thilia-field-help--error" id="i3-aide">Lettres et chiffres uniquement</span>
+  </div>
+  <div class="thilia-field">
+    <label class="thilia-field-label" for="i4">Désactivé</label>
+    <input class="thilia-input" id="i4" value="Verrouillé" disabled>
+  </div>
+</div>

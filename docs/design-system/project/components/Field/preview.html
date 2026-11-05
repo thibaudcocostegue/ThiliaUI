@@ -1,0 +1,16 @@
+<!-- @dsCard group="Extensions · Formulaire" height=300 subtitle="Formulaire composé" -->
+<form class="thilia-demo thilia-demo--column" style="max-width: 420px">
+  <div class="thilia-field">
+    <label class="thilia-field-label" for="f1">Nom<span class="thilia-field-required">Requis</span></label>
+    <input class="thilia-input" id="f1" value="Passerelle">
+  </div>
+  <div class="thilia-field">
+    <label class="thilia-field-label" for="f2">Identifiant<span class="thilia-field-required">Requis</span></label>
+    <input class="thilia-input" id="f2" value="passerelle!" aria-invalid="true" aria-describedby="f2-aide">
+    <span class="thilia-field-help thilia-field-help--error" id="f2-aide">Lettres et chiffres uniquement</span>
+  </div>
+  <div style="display: flex; justify-content: flex-end; gap: 8px">
+    <button class="thilia-button thilia-button--secondary" type="button">Annuler</button>
+    <button class="thilia-button thilia-button--primary" type="button">Enregistrer</button>
+  </div>
+</form>

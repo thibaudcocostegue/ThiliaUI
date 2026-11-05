@@ -1,0 +1,44 @@
+/* Habillage commun des listes d'options (combobox, autocomplétion, liste). */
+.th-options {
+  box-sizing: border-box;
+  max-height: 240px;
+  overflow-y: auto;
+  color: var(--thilia-text);
+  background: var(--thilia-surface-raised);
+  border: var(--thilia-stroke) solid var(--thilia-border);
+  border-radius: var(--thilia-radius);
+}
+
+.th-options__item {
+  display: flex;
+  gap: var(--thilia-space-8);
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: var(--thilia-control-40);
+  padding: 0 var(--thilia-space-12) 0 var(--thilia-space-16);
+  font: var(--thilia-type-body);
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+.th-options__item[data-highlighted] {
+  background: var(--thilia-line);
+}
+
+.th-options__item[data-disabled] {
+  color: var(--thilia-text-secondary);
+  cursor: not-allowed;
+}
+
+.th-options__check {
+  display: flex;
+  color: var(--thilia-accent);
+}
+
+.th-options__empty {
+  padding: var(--thilia-space-12) var(--thilia-space-16);
+  font: var(--thilia-type-small);
+  color: var(--thilia-text-secondary);
+}
